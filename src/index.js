@@ -1,17 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './css/index.css';
-import App from './components/App';
-import * as serviceWorker from './serviceWorker';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import { Stage } from "react-pixi-fiber";
+import RotatingBunny from "./components/RotatingBunny.js";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const height = 450;
+const width = 600;
+const OPTIONS = {
+  backgroundColor: 0x1099bb,
+  height: height,
+  width: width
+};
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+class App extends Component {
+  render() {
+    return (
+      <Stage options={OPTIONS}>
+        <RotatingBunny x={width / 2} y={height / 2} />
+      </Stage>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));
